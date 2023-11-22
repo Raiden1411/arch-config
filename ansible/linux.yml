@@ -1,0 +1,4 @@
+- name: Setup Arch Install
+  hosts: local
+  roles:
+    - web
