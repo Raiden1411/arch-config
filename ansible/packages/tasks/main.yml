@@ -5,6 +5,8 @@
       - curl
       - discord
       - eza
+      - paru
+      - gcc12
       - qt5-wayland
       - qt5ct
       - qt5-quickcontrols
@@ -23,7 +25,6 @@
       - pacman-contrib
       - kitty
       - mako
-      - waybar-hyprland
       - swww
       - swaylock-effects
       - wofi
@@ -38,10 +39,6 @@
       - mpv
       - pamixer
       - pavucontrol
-      - brightnessctl
-      - bluez
-      - bluez-utils
-      - blueman
       - network-manager-applet
       - gvfs
       - thunar-archive-plugin
@@ -54,21 +51,18 @@
       - xfce4-settings
       - nwg-look-bin
       - sddm-git
-      - sddm-sugar-candy-git
       - catppuccin-gtk-theme-mocha
       - catppuccin-gtk-theme-latte
       - bibata-cursor-theme
-      - tela-circle-icon-theme-dracula-git
       - fish
-      - fzf-git
-      - lazygit-git
-      - neovim-git
+      - fzf
+      - neovim
       - brave-bin
+      - inetutils
       - vscodium
       - neofetch
       - pokemon-colorscripts-git
       - cava
-      - spotify-player
       - steam
       - lutris
       - tmux
