@@ -1,0 +1,71 @@
+#!/bin/fish
+
+# Check which waybar theme is set
+set THEMEIS (readlink -f ~/.config/waybar/style.css | cut -d '-' -f2 | cut -d '.' -f1)
+
+#if the theme is not dark then we need to switch to it
+if [ $THEMEIS = "light" ]
+    set SWITCHTO "-dark"
+    set MODESTR "Dark"
+    set CAT "Mocha"
+else
+    set SWITCHTO "-light"
+    set MODESTR "Light"
+    set CAT "Latte"
+end
+
+#show a message
+notify-send -h string:x-canonical-private-synchronous:sys-notify -u low "switching to $MODESTR"
+
+#set the waybar theme
+ln -sf ~/.config/waybar/style/style$SWITCHTO.css ~/.config/waybar/style.css
+
+#set the wofi theme
+ln -sf ~/.config/wofi/style/style$SWITCHTO.css ~/.config/wofi/style.css
+ 
+#set the mako theme
+ln -sf ~/.config/mako/conf/config$SWITCHTO ~/.config/mako/config
+
+#set the spotify theme player
+ln -sf ~/.config/spotify-player/Catppuccin\ $CAT.toml ~/.config/spotify-player/app.toml
+
+#set the kitty theme
+ln -sf ~/.config/kitty/themes/$CAT.conf ~/.config/kitty/themes/theme.conf
+killall -SIGUSR1 kitty
+
+setscheme "Catppuccin $CAT"
+
+#set the qt5ct theme
+sed -i "/^color_scheme_path=/c\color_scheme_path=~/.config/qt5ct/colors/Catppuccin-$CAT.conf" ~/.config/qt5ct/qt5ct.conf
+
+#set the vscode theme
+sed -i "/workbench.colorTheme/c \    \"workbench.colorTheme\": \"Catppuccin $CAT\"," ~/.config/VSCodium/User/settings.json
+sed -i "/workbench.iconTheme/c \    \"workbench.iconTheme\": \"catppuccin-"(echo $CAT | tr '[:upper:]' '[:lower:]')\","" ~/.config/VSCodium/User/settings.json
+
+#set the neovim theme
+nvim --server /tmp/nvim.pipe --remote-send ":set background="(echo $MODESTR | tr '[:upper:]' '[:lower:]')"<cr>"
+
+#set the xfce and GTK theme
+gsettings set org.gnome.desktop.interface gtk-theme "Catppuccin-$CAT-Standard-Mauve-$MODESTR"
+xfconf-query -c xsettings -p /Net/ThemeName -s "Catppuccin-$CAT-Standard-Mauve-$MODESTR"
+
+#update the sddm image
+cp -f ~/.config/backgrounds/background$SWITCHTO.jpg /usr/share/sddm/themes/sdt/wallpaper.jpg
+
+#change the background image and be cool about it ;)
+swww img ~/.config/backgrounds/background$SWITCHTO.jpg \
+    --transition-bezier .43,1.19,1,.4 \
+    --transition-type grow \
+    --transition-duration 1 \
+    --transition-fps 60 \
+    --transition-pos top-right
+
+#reset mako
+sleep 1
+pkill mako
+mako &
+
+#restart the waybar
+#killall -SIGUSR2 waybar <-- start causing web brwsers to close so switched to below...
+pkill waybar
+waybar &
