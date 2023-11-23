@@ -1,5 +1,12 @@
 #!/bin/fish
 
+# setup the first look and feel as dark
+xfconf-query -c xsettings -p /Net/ThemeName -s Catppuccin-Mocha-Standart-Mauve-Dark
+xfconf-query -c xsettings -p /Net/IconThemeName -s "Tela circle dracula dark"
+gsettings set org.gnome.desktop.interface gtk-theme Catppuccin-Mocha-Standart-Mauve-Dark
+gsettings set org.gnome.desktop.interface icon-theme "Tela circle dracula dark"
+gsettings set org.gnome.desktop.interface cursor-theme "Bibata Modern Ice"
+
 # Install Bun
 curl -fsSL https://bun.sh/install | bash
 
