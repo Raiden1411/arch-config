@@ -1,0 +1,35 @@
+- name: Copy sddm theme
+  file:
+    src: ~/arch-config/sddm/theme/sdt
+    dest: /usr/share/sddm/themes/
+    state: directory
+    mode: "755"
+
+- name: Chown
+  file:
+    path: /usr/share/sddm/themes/sdt
+    state: directory
+    owner: raiden
+    group: raiden
+    recurse: true
+
+- name: "Create config dir"
+  file:
+    path: /etc/sddm.conf.d/
+    state: directory
+    mode: "644"
+
+- name: Conf
+  ansible.builtin.command:
+    cmd: set -o pipefail && echo -e "[Theme]\nCurrent=sdt" | sudo tee -a /etc/sddm.conf.d/10-theme.conf
+  changed_when: false
+
+- name: Create sessions
+  ansible.builtin.command:
+    cmd: mkdir /usr/share/wayland-sessions
+    creates: /usr/share/wayland-sessions
+
+- name: Copy hypr.desktop
+  file:
+    src: ~/arch-config/sddm/hyprland.desktop
+    dest: /usr/share/wayland-sessions/

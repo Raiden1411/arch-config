@@ -78,3 +78,7 @@
       - dotnet-sdk
       - less
       - hyprland
+
+- name: Run aur script
+  ansible.builtin.script:
+    cmd: ~/args-config/post-ansible
