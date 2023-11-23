@@ -10,6 +10,7 @@
       - otf-cascadia-code
       - ttf-cascadia-code
       - gcc12
+      - go
       - qt5-wayland
       - qt5ct
       - qt5-quickcontrols
@@ -21,6 +22,9 @@
       - polkit-gnome
       - pipewire
       - wireplumber
+      - vulkan-radeon
+      - libva-mesa-driver
+      - mangohud-git
       - jq
       - wl-clipboard
       - github-cli

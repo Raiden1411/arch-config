@@ -29,4 +29,4 @@ $HOME/.zvm/self/zvm i -D=zls master
 
 chsh -s /usr/bin/fish
 
-sudo systemctl start sddm
+#sudo systemctl start sddm
