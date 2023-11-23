@@ -79,9 +79,15 @@
       - less
       - nodejs
       - npm
+      - fnm
       - hyprland
 
 - name: Run aur script
   become: true
   ansible.builtin.script:
     cmd: ~/args-config/post-ansible
+
+- name: Run post install script
+  become: true
+  ansible.builtin.script:
+    cmd: ~/args-config/post-install
