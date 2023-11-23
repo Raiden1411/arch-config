@@ -1,0 +1,32 @@
+- name: "Create config dir"
+  file:
+    path: ~/.config/
+    state: directory
+    mode: "755"
+
+- name: "Find config files"
+  find:
+    paths: ~/arch-config/dotfiles/
+    recurse: false
+    file_type: any
+    hidden: true
+  register: dot_config
+
+- name: "Copy config files"
+  file:
+    src: "{{ item.path }}"
+    dest: "~/.config/{{ item.path | basename }}"
+    state: link
+  loop: "{{ dot_config.files }}"
+
+- name: Gitconfig
+  file:
+    src: ~/.config/.gitconfig
+    dest: ~/.gitconfig
+    state: link
+
+- name: Tmux
+  file:
+    src: ~/.config/.tmux.conf
+    dest: ~/.tmux.conf
+    state: link

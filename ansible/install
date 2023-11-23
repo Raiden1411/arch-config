@@ -1,0 +1,6 @@
+#!/bin/bash
+
+[ -d ~/.ansible/collections/ansible_collections/community ] ||
+	ansible-galaxy collection install community.general
+
+ansible-playbook -i ./host ./linux.yml --ask-become-pass

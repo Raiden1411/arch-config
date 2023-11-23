@@ -6,6 +6,9 @@
       - discord
       - eza
       - paru
+      - bat
+      - otf-cascadia-code
+      - ttf-cascadia-code
       - gcc12
       - qt5-wayland
       - qt5ct
@@ -73,4 +76,5 @@
       - signal-desktop
       - dotnet-runtime
       - dotnet-sdk
+      - less
       - hyprland
