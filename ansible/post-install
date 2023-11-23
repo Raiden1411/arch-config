@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/bin/bash
 
 # setup the first look and feel as dark
 xfconf-query -c xsettings -p /Net/ThemeName -s Catppuccin-Mocha-Standart-Mauve-Dark
@@ -16,7 +16,6 @@ curl -L https://foundry.paradigm.xyz | bash
 # Configure Fish
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 cat ~/.config/fish/fish_plugins | fisher install $1
-fish_config theme save "Catppuccin Mocha"
 
 # Install pnpm
 bun add -g pnpm
@@ -25,5 +24,9 @@ bun add -g pnpm
 curl https://raw.githubusercontent.com/tristanisham/zvm/master/install.sh | bash
 
 # Install ZIG/ZLS
-zvm i master
-zvm i -D=zls master
+$HOME/.zvm/self/zvm i master
+$HOME/.zvm/self/zvm i -D=zls master
+
+chsh -s /usr/bin/fish
+
+sudo systemctl start sddm
