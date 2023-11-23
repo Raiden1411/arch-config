@@ -29,4 +29,7 @@ $HOME/.zvm/self/zvm i -D=zls master
 
 chsh -s /usr/bin/fish
 
+sudo systemctl enable sddm
+
+# Renable this when ghostty becomes public
 #sudo systemctl start sddm

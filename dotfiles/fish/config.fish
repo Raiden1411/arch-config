@@ -5,11 +5,6 @@ set -gx XDG_CONFIG_HOME $HOME/.config
 
 set -x GPG_TTY (tty)
 
-set NEXT_TELEMETRY_DISABLED 1
-
-set PG_CONFIG /Applications/Postgres.app/Contents/Versions/latest/bin
-fish_add_path $PG_CONFIG
-
 alias cat="bat"
 alias grep="rg"
 alias ll="eza -l -g --icons --git"
@@ -19,22 +14,13 @@ alias website="tmux attach-session -t website"
 alias nvim="nvim"
 alias neofetch="neofetch --ascii --source ~/.config/neofetch/ascii.txt"
 
-set -gx PNPM_HOME "$HOME/.local/share/pnpm"
-set -gx PATH "$PNPM_HOME" $PATH
-
-set -gx FOUNDRY_DIR "$HOME/.foundry"
-set -gx PATH "$FOUNDRY_DIR" $PATH
-
-set FOUNDRY_BIN $HOME/.foundry/bin
-fish_add_path $FOUNDRY_BIN
-
-set -gx BUN_INSTALL "$HOME/.bun"
-set -gx PATH "$BUN_INSTALL/bin" $PATH
-set -gx PATH "$HOME/.local/bin" $PATH
-set -gx GOPATH /usr/local/go
-set -gx ZVM_INSTALL $HOME/.zvm/self
-set -gx PATH $PATH $HOME/.zvm/bin
-set -gx PATH $PATH $ZVM_INSTALL/ $PATH
+fish_add_path $HOME/.foundry/bin
+fish_add_path $HOME/.bun/bin
+fish_add_path $HOME/.local/bin
+fish_add_path /usr/local/go
+fish_add_path $HOME/.foundry/bin
+fish_add_path $HOME/.zvm/bin
+fish_add_path $HOME/.zvm/self
 
 eval (starship init fish)
 pokemon-colorscripts -s -n lugia --no-title
