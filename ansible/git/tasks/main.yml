@@ -5,11 +5,13 @@
   changed_when: false
 
 - name: Abitype
+  become: true
   ansible.builtin.git:
     repo: https://github.com/wagmi-dev/abitype
     dest: /opt/dev/abitype
 
 - name: Grub menu
+  become: true
   ansible.builtin.git:
     repo: https://github.com/semimqmo/sekiro_grub_theme
     dest: /opt/dev/grub_sekiro

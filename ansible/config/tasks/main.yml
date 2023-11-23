@@ -4,6 +4,12 @@
     state: directory
     mode: "700"
 
+- name: "Create ssh dir"
+  file:
+    path: ~/.ssh/
+    state: directory
+    mode: "644"
+
 - name: "Find config files"
   find:
     paths: ~/arch-config/dotfiles/
