@@ -2,7 +2,7 @@
   file:
     path: ~/.config/
     state: directory
-    mode: "755"
+    mode: "644"
 
 - name: "Find config files"
   find:
@@ -30,3 +30,27 @@
     src: ~/.config/.tmux.conf
     dest: ~/.tmux.conf
     state: link
+
+- name: Scripts
+  file:
+    src: ~/arch-config/scripts
+    dest: ~/.scripts
+    state: link
+
+- name: Gpg agent
+  copy:
+    dest: ~/.gnupg/gpg-agent.conf
+    content: "pinentry-program /bin/pinentry"
+    mode: "644"
+
+- name: Ssh config
+  copy:
+    src: ~/.config/.ssh.config
+    dest: ~/.ssh/config
+    mode: u=rw,o=,g=
+
+- name: Ssh control config
+  file:
+    path: ~/.ssh/control
+    state: directory
+    mode: u=rwx,o=,g=
