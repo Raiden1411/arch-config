@@ -21,3 +21,17 @@
   command:
     cmd: /opt/dev/grub_sekiro/install.sh
   changed_when: false
+
+- name: Tmux tpm
+  ansible.builtin.git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: ~/.tmux/plugins/tpm/
+
+- name: Chown
+  become: true
+  file:
+    path: /opt/dev
+    state: directory
+    owner: raiden
+    group: raiden
+    recurse: true

@@ -17,6 +17,7 @@
       - qt6-wayland
       - qt6ct
       - gtk3
+      - gtk4
       - polkit-gnome
       - pipewire
       - wireplumber
