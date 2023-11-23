@@ -1,0 +1,21 @@
+- name: Create dev dir
+  become: true
+  command:
+    cmd: mkdir /opt/dev/
+  changed_when: false
+
+- name: Abitype
+  ansible.builtin.git:
+    repo: https://github.com/wagmi-dev/abitype
+    dest: /opt/dev/abitype
+
+- name: Grub menu
+  ansible.builtin.git:
+    repo: https://github.com/semimqmo/sekiro_grub_theme
+    dest: /opt/dev/grub_sekiro
+
+- name: Install grub menu
+  become: true
+  command:
+    cmd: /opt/dev/grub_sekiro/install.sh
+  changed_when: false
