@@ -2,7 +2,7 @@
   file:
     path: ~/.config/
     state: directory
-    mode: "644"
+    mode: "700"
 
 - name: "Find config files"
   find:
@@ -38,12 +38,6 @@
     src: ~/arch-config/scripts
     dest: ~/.scripts
     state: link
-
-- name: Gpg agent
-  copy:
-    dest: ~/.gnupg/gpg-agent.conf
-    content: "pinentry-program /bin/pinentry"
-    mode: "644"
 
 - name: Ssh config
   copy:

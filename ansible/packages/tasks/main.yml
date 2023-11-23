@@ -77,8 +77,11 @@
       - dotnet-runtime
       - dotnet-sdk
       - less
+      - nodejs
+      - npm
       - hyprland
 
 - name: Run aur script
+  become: true
   ansible.builtin.script:
     cmd: ~/args-config/post-ansible
