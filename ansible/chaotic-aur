@@ -7,5 +7,6 @@ pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.
 
 pacman -Sy
 
+# Add this to pacman.conf
 # [chaotic-aur]
 # Include = /etc/pacman.d/chaotic-mirrorlist
