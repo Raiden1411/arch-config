@@ -53,5 +53,7 @@ user = Raiden1411
 defaultBranch = main
 [commit]
 gpgsign = true
+[gpg]
+format = ssh
 [credential]
 helper = cache
