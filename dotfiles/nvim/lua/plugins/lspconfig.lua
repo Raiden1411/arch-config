@@ -102,10 +102,13 @@ vim.diagnostic.config({
   update_in_insert = false,
   virtual_text = { spacing = 4, prefix = "●" },
   severity_sort = true,
+  float = {
+    header = false,
+    border = 'rounded',
+    focusable = true
+  }
 })
 
-
--- Lsp config
 local lsp = {}
 
 lsp.autoformat = true
@@ -247,12 +250,19 @@ local function on_attach(client, bufnr)
   lsp.setup_keymaps(client, bufnr)
 end
 
+-- LSP settings (for overriding per client)
+local handlers = {
+  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
+  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
+}
+
 local options = {
   on_attach = on_attach,
   capabilities = capabilities,
   flags = {
     debounce_text_changes = 150,
   },
+  handlers = handlers,
 }
 
 for server, opts in pairs(servers) do
