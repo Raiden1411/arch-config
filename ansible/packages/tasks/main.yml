@@ -82,9 +82,9 @@
       - dotnet-runtime
       - dotnet-sdk
       - less
-      - nodejs
-      - npm
       - fnm
+      - python-pip
+      - fd
       - hyprland
 
 - name: Create the `aur_builder` user

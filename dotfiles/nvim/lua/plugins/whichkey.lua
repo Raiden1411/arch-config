@@ -17,7 +17,7 @@ plugin.register({
   mode = { "n", "v" },
   ["g"] = { name = "+goto" },
   ["+"] = { name = "+next" },
-  ["´"] = { name = "+prev" },
+  ["ç"] = { name = "+prev" },
   ["<leader>"] = {
     a = {
       name = "+harpoon",
@@ -35,7 +35,7 @@ plugin.register({
       name = "+git",
       h = { name = "+hunk" },
       c = { name = "+commit/checkout" },
-      p = { name = "+push/pull" },
+      p = { name = "+push/pull", l = "+pull", s = "+push" },
     },
     s = { name = "+search" },
     t = {

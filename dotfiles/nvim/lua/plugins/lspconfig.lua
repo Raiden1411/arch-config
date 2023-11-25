@@ -226,14 +226,14 @@ function lsp.setup_keymaps(client, buffer)
     ["K"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
     ["<C-,>"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help", mode = { "n", "i" } },
     ["+d"] = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Next Diagnostic" },
-    ["´d"] = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Prev Diagnostic" },
+    ["çd"] = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Prev Diagnostic" },
     ["+e"] = { "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<cr>", "Next Error" },
-    ["´e"] = { "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<cr>", "Prev Error" },
+    ["çe"] = { "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<cr>", "Prev Error" },
     ["+w"] = {
       "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.WARNING})<cr>",
       "Next Warning",
     },
-    ["´w"] = {
+    ["çw"] = {
       "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.WARNING})<cr>",
       "Prev Warning",
     },

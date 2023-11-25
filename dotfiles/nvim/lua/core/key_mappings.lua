@@ -24,7 +24,7 @@ vim.keymap.set({ 'n', 'v' }, "<leader>zk", "<cmd>terminal zig build -Dgtk-libadw
 vim.keymap.set({ 'n', 'v' }, "<leader>bq", "<cmd>bdelete<CR>", { desc = "Delete current buffer" })
 vim.keymap.set(
   "n",
-  "<leader>s",
+  "<leader>S",
   [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
   { desc = "Replace current word" }
 )

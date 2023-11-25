@@ -18,7 +18,7 @@ curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fi
 cat ~/.config/fish/fish_plugins | fisher install $1
 
 # Install pnpm
-bun add -g pnpm
+bun add -g pnpm typescript
 
 # Configure ZVM
 curl https://raw.githubusercontent.com/tristanisham/zvm/master/install.sh | bash
