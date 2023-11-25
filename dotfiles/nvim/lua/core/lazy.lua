@@ -1,5 +1,3 @@
-local icons = get_icons()
-local lsp = get_lsp()
 local util = get_utils()
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -54,12 +52,6 @@ local plugins = {
   {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },
-  },
-
-  -- indent-blankline.nvim (https://github.com/lukas-reineke/indent-blankline.nvim)
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    event = { "BufReadPost", "BufNewFile" },
   },
 
   -- LuaSnip (https://github.com/L3MON4D3/LuaSnip)
@@ -135,84 +127,6 @@ local plugins = {
       -- https://github.com/saadparwaiz1/cmp_luasnip
       "saadparwaiz1/cmp_luasnip",
     },
-    opts = function()
-      vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
-      local cmp = require("cmp")
-      local luasnip = require("luasnip")
-      local defaults = require("cmp.config.default")()
-
-      return {
-        completion = {
-          completeopt = "menu,menuone,noinsert",
-        },
-        experimental = {
-          ghost_text = {
-            hl_group = "CmpGhostText",
-          },
-        },
-        formatting = {
-          format = function(_, item)
-            if icons.kinds[item.kind] then
-              item.kind = icons.kinds[item.kind] .. item.kind
-            end
-            return item
-          end,
-        },
-        mapping = {
-          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          ["<C-Space>"] = cmp.mapping(function()
-            if cmp.visible() then
-              cmp.close()
-            else
-              cmp.complete()
-            end
-          end, { "i", "c" }),
-          ["<C-e>"] = cmp.mapping.abort(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
-          ["<S-CR>"] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-          }),
-          ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-            elseif luasnip.expand_or_jumpable() then
-              luasnip.expand_or_jump()
-            else
-              fallback()
-            end
-          end, {
-            "i",
-            "s",
-          }),
-          ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-            elseif luasnip.jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              fallback()
-            end
-          end, {
-            "i",
-            "s",
-          }),
-        },
-        snippet = {
-          expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-          end,
-        },
-        sorting = defaults.sorting,
-        sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-          { name = "buffer" },
-          { name = "path" },
-        }),
-      }
-    end,
   },
 
   -- nvim-lspconfig (https://github.com/neovim/nvim-lspconfig)
@@ -228,157 +142,6 @@ local plugins = {
       -- https://github.com/smjonas/inc-rename.nvim
       "smjonas/inc-rename.nvim",
     },
-    config = function()
-      require("mason").setup()
-
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "lua_ls",
-          "tsserver",
-          "gopls",
-          "omnisharp",
-          "biome",
-          "ansiblels"
-        },
-        -- automatic_installation = true,
-      })
-
-      local servers = {
-        powershell_es = {},
-        biome = {},
-        lua_ls = {
-          settings = {
-            Lua = {
-              diagnostics = {
-                globals = {
-                  "after_each",
-                  "assert",
-                  "before_each",
-                  "describe",
-                  "it",
-                  "require",
-                  "use",
-                  "vim",
-                },
-              },
-              format = {
-                enable = true,
-                defaultConfig = {
-                  indent_style = "space",
-                  indent_size = "2",
-                  continuation_indent_size = "2",
-                },
-              },
-            },
-          },
-        },
-        tsserver = {
-          settings = {
-            on_attach = function(client)
-              client.server_capabilities.documentFormattingProvider = false
-            end,
-            typescript = {
-              inlayHints = {
-                includeInlayParameterNameHints = "literal",
-                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = false,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-              },
-            },
-          },
-        },
-        zls = {
-          settings = {
-            name = "zls",
-            cmd = { "zls" },
-            filetypes = { ".zig", ".zon" },
-          },
-        },
-        gopls = {
-          settings = {
-            filetypes = { "go", "gomod", "gowork", "gotmpl" },
-            gopls = {
-              completeUnimported = true,
-              analyses = {
-                unusedparams = true,
-              },
-            },
-          },
-        },
-        omnisharp = {
-          enable_editorconfig_support = true,
-          enable_ms_build_load_projects_on_demand = false,
-          enable_roslyn_analyzers = false,
-          organize_imports_on_format = true,
-          enable_import_completion = true,
-          sdk_include_prereleases = true,
-          analyze_open_documents_only = false,
-        },
-        ansiblels = {
-          single_file_support = true
-        }
-      }
-
-      local signs = icons.diagnostics
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-      end
-      vim.diagnostic.config({
-        underline = true,
-        update_in_insert = false,
-        virtual_text = { spacing = 4, prefix = "●" },
-        severity_sort = true,
-      })
-
-      local capabilities =
-          require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-      local function on_attach(client, bufnr)
-        lsp.setup_format(client, bufnr)
-        lsp.setup_keymaps(client, bufnr)
-      end
-
-      local options = {
-        on_attach = on_attach,
-        capabilities = capabilities,
-        flags = {
-          debounce_text_changes = 150,
-        },
-      }
-
-      for server, opts in pairs(servers) do
-        opts = vim.tbl_deep_extend("force", {}, options, opts or {})
-        require("lspconfig")[server].setup(opts)
-      end
-
-      local nls = require("null-ls")
-      nls.setup({
-        debounce = 150,
-        save_after_format = false,
-        sources = {
-          nls.builtins.formatting.biome.with({
-            args = {
-              "check",
-              "--apply-unsafe",
-              "--formatter-enabled=true",
-              "--organize-imports-enabled=true",
-              "--skip-errors",
-              "$FILENAME",
-            },
-          }),
-          nls.builtins.formatting.fish_indent,
-          nls.builtins.formatting.gofumpt,
-          nls.builtins.formatting.goimports_reviser,
-          nls.builtins.formatting.golines,
-          nls.builtins.formatting.csharpier,
-        },
-        on_attach = on_attach,
-      })
-    end,
   },
 
   -- nvim-treesitter (https://github.com/nvim-treesitter/nvim-treesitter)
@@ -416,26 +179,6 @@ local plugins = {
   -- twoslash-queries.nvim (https://github.com/marilari88/twoslash-queries.nvim)
   {
     "marilari88/twoslash-queries.nvim",
-    opts = {
-      multi_line = true,
-      highlight = "Type",
-    },
-    config = function(_, opts)
-      local twoslash_queries = require("twoslash-queries")
-      twoslash_queries.setup(opts)
-      -- attach whenever tsserver attaches
-      util.on_attach(function(client, bufnr)
-        if client.name == "tsserver" then
-          require("twoslash-queries").attach(client, bufnr)
-          vim.keymap.set(
-            "n",
-            "<C-K>",
-            "<cmd>TwoslashQueriesInspect<CR>",
-            { desc = "twoslash inspect variable under the cursor" }
-          )
-        end
-      end)
-    end,
   },
 
   -- vim-tmux-navigator (https://github.com/christoomey/vim-tmux-navigator)
@@ -464,7 +207,7 @@ local plugins = {
       -- OPTIONAL:
       --   `nvim-notify` is only needed, if you want to use the notification view.
       --   If not available, we use `mini` as the fallback
-      -- "rcarriga/nvim-notify",
+      "rcarriga/nvim-notify",
     },
   },
   { "folke/neodev.nvim",    opts = {} },
