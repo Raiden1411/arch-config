@@ -13,6 +13,7 @@
       - go
       - qt5-wayland
       - qt5ct
+      - gedit
       - qt5-quickcontrols
       - qt5-imageformats
       - qt6-wayland
