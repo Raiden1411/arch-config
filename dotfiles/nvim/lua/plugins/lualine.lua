@@ -48,7 +48,10 @@ plugin.setup({
       },
     },
     lualine_c = {
-      "buffers",
+      {
+        "buffers",
+        symbols = { modified = " ", alternate_file = "󱈖 ", directory = " " },
+      }
     },
     lualine_x = {
       "filetype",

@@ -53,7 +53,26 @@ local plugins = {
   },
 
   -- Add indentation guides even on blank lines
-  'lukas-reineke/indent-blankline.nvim',
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    main = 'ibl',
+    opts = {
+      exclude = {
+        filetypes = {
+          "help",
+          "alpha",
+          "dashboard",
+          "neo-tree",
+          "Trouble",
+          "lazy",
+          "mason",
+          "notify",
+          "toggleterm",
+          "lazyterm",
+        },
+      }
+    }
+  },
 
   -- LuaSnip (https://github.com/L3MON4D3/LuaSnip)
   {
