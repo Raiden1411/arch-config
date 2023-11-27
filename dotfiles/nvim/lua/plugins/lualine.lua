@@ -16,24 +16,22 @@ local icons = get_icons()
 plugin.setup({
   options = {
     always_divide_middle = true,
-    component_separators = "",
-    disabled_filetypes = {
-      "neo-tree",
-    },
+    component_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
     globalstatus = false,
     icons_enabled = true,
-    section_separators = "",
     theme = "auto",
   },
   sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {
-      "mode",
+    lualine_a = { 'mode' },
+    lualine_b = {
       {
-        "filename",
-        cond = conditions.buffer_not_empty,
-        symbols = { modified = "", readonly = "", unnamed = "" },
+        "diff",
+        symbols = {
+          added = icons.git.added,
+          modified = icons.git.modified,
+          removed = icons.git.removed,
+        },
       },
       {
         "branch",
@@ -49,25 +47,21 @@ plugin.setup({
         },
       },
     },
+    lualine_c = {
+      "buffers",
+    },
     lualine_x = {
-      {
-        "diff",
-        symbols = {
-          added = icons.git.added,
-          modified = icons.git.modified,
-          removed = icons.git.removed,
-        },
-      },
-      {
-        require('noice').api.statusline.mode.get,
-        cond = require('noice').api.statusline.mode.has,
-        color = { fg = "#ff9e64" },
-      },
       "filetype",
       "progress",
       "location",
     },
-    lualine_y = {},
+    lualine_y = {
+      {
+        "filename",
+        cond = conditions.buffer_not_empty,
+        symbols = { modified = "", readonly = "󰈡", unnamed = "󱇧" },
+      },
+    },
     lualine_z = {},
   },
   inactive_sections = {
@@ -81,4 +75,3 @@ plugin.setup({
   tabline = {},
   extensions = {},
 })
-

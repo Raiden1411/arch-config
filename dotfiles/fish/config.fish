@@ -10,8 +10,8 @@ alias grep="rg"
 alias ll="eza -l -g --icons --git"
 alias llt="eza -1 --icons --tree --git-ignore"
 alias td="tmux detach"
-alias website="tmux attach-session -t website"
-alias nvim="nvim"
+alias dev="tmux new -s dev"
+alias deva="tmux attach-session -t dev"
 alias neofetch="neofetch --ascii --source ~/.config/neofetch/ascii.txt"
 
 fish_add_path $HOME/.foundry/bin

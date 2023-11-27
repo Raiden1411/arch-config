@@ -52,6 +52,9 @@ local plugins = {
     event = { "BufReadPre", "BufNewFile" },
   },
 
+  -- Add indentation guides even on blank lines
+  'lukas-reineke/indent-blankline.nvim',
+
   -- LuaSnip (https://github.com/L3MON4D3/LuaSnip)
   {
     "L3MON4D3/LuaSnip",
