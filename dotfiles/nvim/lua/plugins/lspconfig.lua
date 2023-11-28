@@ -17,6 +17,7 @@ require("mason-lspconfig").setup({
 local servers = {
   powershell_es = {},
   biome = {},
+  cssls = {},
   lua_ls = {
     settings = {
       Lua = {

@@ -22,8 +22,7 @@
 		"pulseaudio#microphone",
 		"custom/spotify",
 		"tray",
-		"temperature",
-		"custom/light_dark"
+		"temperature"
 	],
 
 	"hyprland/window": {
@@ -35,6 +34,7 @@
 			"(.*) - Visual Studio Code": "\uf121  $1",
 			"(.*) - Brave": "\uf268  $1",
 			"xterm-kitty - (.*)": "\uf120  $1",
+			"xterm-ghostty - (.*)": "\uf120  $1",
 			"(.*) - VIM": "\uf036  $1",
 			"Telegram (.*)": "\uf2c6  $1",
 			"/(.*)": "\uf07b  /$1"

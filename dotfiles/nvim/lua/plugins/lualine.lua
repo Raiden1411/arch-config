@@ -65,7 +65,13 @@ plugin.setup({
         symbols = { modified = "", readonly = "󰈡", unnamed = "󱇧" },
       },
     },
-    lualine_z = {},
+    lualine_z = {
+      {
+        require("noice").api.statusline.mode.get,
+        cond = require("noice").api.statusline.mode.has,
+        color = { fg = "#000000" },
+      }
+    },
   },
   inactive_sections = {
     lualine_a = {},
