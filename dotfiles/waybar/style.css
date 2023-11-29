@@ -1,22 +1,21 @@
 @import "mocha.css";
 
 * {
-  border: none;
-  border-radius: 0;
+  /* border: none; */
+  /* border-radius: 0; */
   font-family: "Cascadia Code";
   font-weight: bold;
-  font-size: 16px;
+  font-size: 14px;
   min-height: 0;
-  color: @text;
+  /* color: @text; */
 }
 
 window#waybar {
-  background: @base;
-  opacity: 0.8;
+  background-color: transparent;
+  border-radius: 10px 10px 10px 10px;
 }
 
 tooltip {
-  background: @base;
   opacity: 0.8;
   border-radius: 10px;
   border-width: 2px;
@@ -46,8 +45,6 @@ tooltip label {
   border-radius: 10px;
 }
 
-#custom-launch_wofi,
-#custom-launch_thunar,
 #custom-cava-internal,
 #custom-lock_screen,
 #custom-power_btn,
@@ -59,31 +56,83 @@ tooltip label {
 #custom-updates,
 #memory,
 #clock,
-#battery,
 #pulseaudio,
 #network,
 #tray,
 #temperature,
 #workspaces,
 #idle_inhibitor {
-  background: rgba(21, 18, 27, 0);
-  opacity: 1;
-  padding: 0px 5px;
-  margin: 0px 3px;
-  border: 0px;
+  background-color: @base;
+  margin-top: 2px;
+  margin-bottom: 0px;
+  padding: 3px;
+}
+
+#disk,
+#memory,
+#cpu,
+#pulseaudio,
+#custom-updates,
+#idle_inhibitor,
+#custom-lock_screen,
+#custom-power_btn {
+  padding: 0.5rem;
+}
+
+#temperature {
+  padding-top: 5px;
+}
+
+
+#pulseaudio,
+#custom-lock_screen,
+#workspaces,
+#cpu,
+#memory,
+#clock {
+  border-top: 2px solid @mauve;
+  border-bottom: 2px solid @mauve;
+}
+
+#temperature,
+#custom-cava-internal,
+#custom-spotify,
+#custom-updates {
+  border-top: 2px solid @mauve;
+  border-bottom: 2px solid @mauve;
+  border-right: 2px solid @mauve;
+  border-radius: 0px 10px 10px 0px;
+}
+
+#custom-power_btn,
+#disk,
+#idle_inhibitor {
+  border-top: 2px solid @mauve;
+  border-bottom: 2px solid @mauve;
+  border-left: 2px solid @mauve;
+  border-radius: 10px 0px 0px 10px;
+}
+
+#disk {
+  margin-left: 1.5rem;
+}
+
+#pulseaudio.microphone {
+  border-left: 2px solid @mauve;
+  border-radius: 10px 0px 0px 10px;
 }
 
 #temperature.critical {
   color: @red;
 }
 
-#workspaces {
-  padding-right: 0px;
-  padding-left: 5px;
-}
+
 
 #window {
   border-radius: 10px;
+  border-color: @mauve;
+  border-style: solid;
+  border-width: 2px;
   margin-left: 0px;
   margin-right: 0px;
 }
@@ -91,4 +140,13 @@ tooltip label {
 #custom-cava-internal {
   color: @maroon;
   padding-right: 1rem;
+  margin-right: 5rem;
+}
+
+#tray {
+  border-radius: 10px;
+  border-color: @mauve;
+  border-style: solid;
+  border-width: 2px;
+  margin-left: 1.5rem;
 }

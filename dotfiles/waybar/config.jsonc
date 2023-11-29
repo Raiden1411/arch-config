@@ -15,14 +15,14 @@
 	],
 	"modules-center": ["idle_inhibitor", "clock", "custom/updates"],
 	"modules-right": [
+		"pulseaudio#microphone",
+		"pulseaudio",
+		"custom/spotify",
 		"disk",
 		"cpu",
 		"memory",
-		"pulseaudio",
-		"pulseaudio#microphone",
-		"custom/spotify",
-		"tray",
-		"temperature"
+		"temperature",
+		"tray"
 	],
 
 	"hyprland/window": {
@@ -100,7 +100,7 @@
 	},
 
 	"cpu": {
-		"interval": 10,
+		"interval": 5,
 		"format": " {usage}%",
 		"max-length": 16,
 		"on-click": "ghostty --fullscreen=true --title=btop -e sh -c 'btop'"
