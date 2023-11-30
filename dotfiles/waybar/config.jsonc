@@ -1,11 +1,12 @@
 {
 	"layer": "top",
 	"position": "top",
-	"mod": "dock",
+	"output": "HDMI-A-1",
+	"mode": "dock",
 	"exclusive": true,
 	"passthrough": false,
 	"gtk-layer-shell": true,
-	"height": 20,
+	"height": 10,
 	"modules-left": [
 		"custom/power_btn",
 		"custom/lock_screen",
