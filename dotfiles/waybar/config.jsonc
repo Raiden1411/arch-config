@@ -2,7 +2,6 @@
 	"layer": "top",
 	"position": "top",
 	"output": "HDMI-A-1",
-	"mode": "dock",
 	"exclusive": true,
 	"passthrough": false,
 	"gtk-layer-shell": true,
