@@ -15,10 +15,10 @@ alias deva="tmux attach-session -t dev"
 alias neofetch="neofetch --ascii --source ~/.config/neofetch/ascii.txt"
 
 fish_add_path $HOME/.foundry/bin
+fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.bun/bin
 fish_add_path $HOME/.local/bin
 fish_add_path /usr/local/go
-fish_add_path $HOME/.foundry/bin
 fish_add_path $HOME/.zvm/bin
 fish_add_path $HOME/.zvm/self
 

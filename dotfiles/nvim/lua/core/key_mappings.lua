@@ -21,6 +21,10 @@ vim.keymap.set({ 'n', 'v' }, "<leader>zg", "<cmd>terminal zig build -Dapp-runtim
   { desc = "Ghostty build glfw" })
 vim.keymap.set({ 'n', 'v' }, "<leader>zk", "<cmd>terminal zig build -Dgtk-libadwaita=false<CR>",
   { desc = "Ghostty build gtk" })
+vim.keymap.set({ 'n', 'v' }, "<leader>zt", "<cmd>terminal zig build test --summary all<CR>",
+  { desc = "Zig build tests" })
+vim.keymap.set({ 'n', 'v' }, "<leader>zb", "<cmd>terminal zig build<CR>",
+  { desc = "Zig build" })
 vim.keymap.set({ 'n', 'v' }, "<leader>bq", "<cmd>bdelete<CR>", { desc = "Delete current buffer" })
 vim.keymap.set(
   "n",
