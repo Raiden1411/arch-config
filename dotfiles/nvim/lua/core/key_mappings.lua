@@ -23,6 +23,10 @@ vim.keymap.set({ 'n', 'v' }, "<leader>zk", "<cmd>terminal zig build -Dgtk-libadw
   { desc = "Ghostty build gtk" })
 vim.keymap.set({ 'n', 'v' }, "<leader>zt", "<cmd>terminal zig build test --summary all<CR>",
   { desc = "Zig build tests" })
+vim.keymap.set({ 'n', 'v' }, "<leader>zc", function()
+  local cmd = "terminal zig test " .. vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
+  vim.cmd(cmd)
+end, { desc = "Zig test current file" })
 vim.keymap.set({ 'n', 'v' }, "<leader>zb", "<cmd>terminal zig build<CR>",
   { desc = "Zig build" })
 vim.keymap.set({ 'n', 'v' }, "<leader>bq", "<cmd>bdelete<CR>", { desc = "Delete current buffer" })
