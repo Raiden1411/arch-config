@@ -122,7 +122,11 @@ local plugins = {
     end,
   },
   { "windwp/nvim-autopairs", event = "InsertEnter" },
-  "ThePrimeagen/harpoon",
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" }
+  },
   "mbbill/undotree",
 
   -- lualine.nvim (https://github.com/nvim-lualine/lualine.nvim)
