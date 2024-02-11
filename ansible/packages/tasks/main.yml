@@ -87,6 +87,7 @@
       - python-pip
       - fd
       - hyprland
+      - waybar
 
 - name: Create the `aur_builder` user
   become: true
