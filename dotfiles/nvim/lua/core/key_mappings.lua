@@ -21,7 +21,7 @@ vim.keymap.set({ 'n', 'v' }, "<leader>zg", "<cmd>terminal zig build -Dapp-runtim
   { desc = "Ghostty build glfw" })
 vim.keymap.set({ 'n', 'v' }, "<leader>zk", "<cmd>terminal zig build -Dgtk-libadwaita=false<CR>",
   { desc = "Ghostty build gtk" })
-vim.keymap.set({ 'n', 'v' }, "<leader>zt", "<cmd>terminal zig build test --summary all<CR>",
+vim.keymap.set({ 'n', 'v' }, "<leader>zt", "<cmd>terminal zig build test --summary all -freference-trace<CR>",
   { desc = "Zig build tests" })
 vim.keymap.set({ 'n', 'v' }, "<leader>zc", function()
   local cmd = "terminal zig test " .. vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())

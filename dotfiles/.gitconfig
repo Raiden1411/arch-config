@@ -54,3 +54,5 @@ gpgsign = true
 format = ssh
 [credential]
 helper = cache
+[maintenance]
+	repo = /opt/dev/zig/zabi
