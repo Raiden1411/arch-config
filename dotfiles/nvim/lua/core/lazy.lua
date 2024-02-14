@@ -30,6 +30,12 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
   { "catppuccin/nvim",                 name = "catppuccin", priority = 1000 },
   { "luckasRanarison/tree-sitter-hypr" },
   {
