@@ -26,3 +26,10 @@ eval (starship init fish)
 pokemon-colorscripts -s -n lugia --no-title
 
 echo -e y | fish_config theme save "Catppuccin Mocha"
+
+# pnpm
+set -gx PNPM_HOME "/home/raiden/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
