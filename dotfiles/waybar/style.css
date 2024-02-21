@@ -83,7 +83,6 @@ tooltip label {
   padding-top: 5px;
 }
 
-
 #pulseaudio,
 #custom-lock_screen,
 #workspaces,
@@ -126,8 +125,6 @@ tooltip label {
   color: @red;
 }
 
-
-
 #window {
   border-radius: 10px;
   border-color: @mauve;
@@ -140,7 +137,7 @@ tooltip label {
 #custom-cava-internal {
   color: @maroon;
   padding-right: 1rem;
-  margin-right: 5rem;
+  margin-right: 2rem;
 }
 
 #tray {
