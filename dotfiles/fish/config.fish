@@ -14,7 +14,7 @@ alias dev="tmux new -s dev"
 alias deva="tmux attach-session -t dev"
 alias neofetch="neofetch --ascii --source ~/.config/neofetch/ascii.txt"
 
-fish_add_path $HOME/.foundry/bin
+fish_add_path $HOME/.config/.foundry/bin
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.bun/bin
 fish_add_path $HOME/.local/bin
@@ -30,6 +30,6 @@ echo -e y | fish_config theme save "Catppuccin Mocha"
 # pnpm
 set -gx PNPM_HOME "/home/raiden/.local/share/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
