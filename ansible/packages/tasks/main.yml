@@ -58,7 +58,7 @@
       - noto-fonts-emoji
       - lxappearance
       - xfce4-settings
-      - nwg-look-bin
+      - nwg-look
       - sddm-git
       - catppuccin-gtk-theme-mocha
       - catppuccin-gtk-theme-latte

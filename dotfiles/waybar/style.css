@@ -61,6 +61,7 @@ tooltip label {
 #tray,
 #temperature,
 #workspaces,
+#battery,
 #idle_inhibitor {
   background-color: @base;
   margin-top: 2px;
@@ -88,12 +89,13 @@ tooltip label {
 #workspaces,
 #cpu,
 #memory,
+#temperature,
 #clock {
   border-top: 2px solid @mauve;
   border-bottom: 2px solid @mauve;
 }
 
-#temperature,
+#battery,
 #custom-cava-internal,
 #custom-spotify,
 #custom-updates {

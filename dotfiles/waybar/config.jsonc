@@ -1,7 +1,7 @@
 {
 	"layer": "top",
 	"position": "top",
-	"output": "HDMI-A-1",
+	"output": "eDP-1",
 	"exclusive": true,
 	"passthrough": false,
 	"gtk-layer-shell": true,
@@ -22,6 +22,7 @@
 		"cpu",
 		"memory",
 		"temperature",
+		"battery",
 		"tray"
 	],
 
@@ -89,6 +90,20 @@
 			"9": [],
 			"10": []
 		}
+	},
+
+	"battery": {
+		"states": {
+			"good": 80,
+			"warning": 30,
+			"critical": 20
+		},
+		"format": "{icon}",
+		"format-charging": " {capacity}%",
+		"format-plugged": " {capacity}%",
+		"format-alt-click": "click-right",
+		"format-alt": "{icon} {capacity}%",
+		"format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
 	},
 
 	"disk": {
