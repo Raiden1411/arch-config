@@ -7,6 +7,7 @@ font-size = 13
 shell-integration = fish
 cursor-style = block
 cursor-style-blink = false
+shell-integration-features = no-cursor
 confirm-close-surface = false
 window-decoration = false
 background-opacity = 0.9
