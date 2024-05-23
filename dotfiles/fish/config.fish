@@ -20,6 +20,7 @@ fish_add_path $HOME/.bun/bin
 fish_add_path $HOME/.local/bin
 fish_add_path /usr/local/go
 fish_add_path $HOME/.zvm/bin
+fish_add_path $HOME/go/bin
 fish_add_path $HOME/.zvm/self
 
 eval (starship init fish)
