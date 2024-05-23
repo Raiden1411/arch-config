@@ -8,6 +8,7 @@ shell-integration = fish
 cursor-style = block
 cursor-style-blink = false
 confirm-close-surface = false
+shell-integration-features = no-cursor
 window-decoration = false
 background-opacity = 0.9
 

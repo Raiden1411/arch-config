@@ -21,6 +21,7 @@ fish_add_path $HOME/.local/bin
 fish_add_path /usr/local/go
 fish_add_path $HOME/.zvm/bin
 fish_add_path $HOME/.zvm/self
+fish_add_path $HOME/go/bin
 
 eval (starship init fish)
 pokemon-colorscripts -s -n lugia --no-title
