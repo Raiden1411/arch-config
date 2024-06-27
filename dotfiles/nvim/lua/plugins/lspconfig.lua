@@ -277,16 +277,7 @@ nls.setup({
   debounce = 150,
   save_after_format = false,
   sources = {
-    nls.builtins.formatting.biome.with({
-      args = {
-        "check",
-        "--apply-unsafe",
-        "--formatter-enabled=true",
-        "--organize-imports-enabled=true",
-        "--skip-errors",
-        "$FILENAME",
-      },
-    }),
+    nls.builtins.formatting.biome,
     nls.builtins.formatting.fish_indent,
     nls.builtins.formatting.gofumpt,
     nls.builtins.formatting.goimports_reviser,
