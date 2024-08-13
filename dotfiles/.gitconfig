@@ -28,7 +28,7 @@ p = push
 l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short
 
 [core]
-pager = cat
+pager = delta
 
 [delta]
 navigate = true    # use n and N to move between diff sections

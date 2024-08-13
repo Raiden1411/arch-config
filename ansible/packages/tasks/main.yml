@@ -88,6 +88,7 @@
       - fd
       - hyprland
       - waybar
+      - git-delta
 
 - name: Create the `aur_builder` user
   become: true
