@@ -64,6 +64,9 @@ local servers = {
       name = "zls",
       cmd = { "zls" },
       filetypes = { ".zig", ".zon" },
+      warn_style = true,
+      enable_inlay_hints = true,
+      enable_snippets = false,
     },
   },
   gopls = {
