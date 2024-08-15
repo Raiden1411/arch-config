@@ -8,61 +8,62 @@ local util = get_utils()
 
 plugin.setup({
   plugins = { spelling = true },
-  replace = { ["<leader>"] = "SPC" },
+  key_labels = { ["<leader>"] = "SPC" },
   show_help = false,
-  triggers = { "auto" },
+  triggers = "auto",
 })
 
-plugin.add(
-  {
-    {
-      mode = { "n", "v" },
-      { "+",           group = "next" },
-      { "<leader>Q",   "<cmd>q!<cr>",            hidden = true },
-      { "<leader>a",   group = "harpoon" },
-      { "<leader>b",   group = "buffer" },
-      { "<leader>c",   group = "code" },
-      { "<leader>d",   group = "debug" },
-      { "<leader>dg",  group = "go" },
-      { "<leader>du",  group = "ui" },
-      { "<leader>f",   group = "file" },
-      { "<leader>fn",  "<cmd>enew<cr>",          desc = "New File" },
-      { "<leader>g",   group = "git" },
-      { "<leader>gc",  group = "commit/checkout" },
-      { "<leader>gh",  group = "hunk" },
-      { "<leader>gp",  group = "push/pull" },
-      { "<leader>gpl", desc = "+pull" },
-      { "<leader>gps", desc = "+push" },
-      { "<leader>q",   "<cmd>q<cr>",             hidden = true },
-      { "<leader>s",   group = "search" },
-      { "<leader>t",   group = "toggle" },
-      { "<leader>tg",  group = "git" },
-      {
-        "<leader>tn",
+plugin.register({
+  mode = { "n", "v" },
+  ["g"] = { name = "+goto" },
+  ["+"] = { name = "+next" },
+  ["ç"] = { name = "+prev" },
+  ["<leader>"] = {
+    a = {
+      name = "+harpoon",
+    },
+    b = {
+      name = "+buffer",
+    },
+    c = { name = "+code" },
+    d = { name = "+debug", g = { name = "+go" }, u = { name = "+ui" } },
+    f = {
+      name = "+file",
+      n = { "<cmd>enew<cr>", "New File" },
+    },
+    g = {
+      name = "+git",
+      h = { name = "+hunk" },
+      c = { name = "+commit/checkout" },
+      p = { name = "+push/pull", l = "+pull", s = "+push" },
+    },
+    s = { name = "+search" },
+    t = {
+      name = "toggle",
+      g = { name = "git" },
+      n = {
         function()
           util.toggle("relativenumber", true)
           util.toggle("number")
         end,
-        desc = "Line Numbers"
+        "Line Numbers",
       },
-      {
-        "<leader>ts",
+      s = {
         function()
           util.toggle("spell")
         end,
-        desc = "Spelling"
+        "Spelling",
       },
-      {
-        "<leader>tw",
+      w = {
         function()
           util.toggle("wrap")
         end,
-        desc = "Word Wrap"
+        "Word Wrap",
       },
-      { "<leader>w", "<cmd>w<cr>",         hidden = true },
-      { "<leader>x", group = "diagnostics" },
-      { "g",         group = "goto" },
-      { "ç",         group = "prev" },
     },
-  }
-)
+    q = { "<cmd>q<cr>", "which_key_ignore", silent = true },
+    Q = { "<cmd>q!<cr>", "which_key_ignore", silent = true },
+    w = { "<cmd>w<cr>", "which_key_ignore", silent = true },
+    x = { name = "+diagnostics" },
+  },
+})
