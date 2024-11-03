@@ -29,7 +29,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-
   {
     "folke/tokyonight.nvim",
     lazy = false,
