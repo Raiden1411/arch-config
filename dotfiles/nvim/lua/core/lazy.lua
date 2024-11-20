@@ -35,7 +35,6 @@ local plugins = {
     priority = 1000,
     opts = {},
   },
-  { "catppuccin/nvim",                 name = "catppuccin", priority = 1000 },
   { "luckasRanarison/tree-sitter-hypr" },
   {
     "stevearc/oil.nvim",
@@ -77,27 +76,6 @@ local plugins = {
         },
       }
     }
-  },
-
-  -- Compiler nvim ()
-  {
-    "Raiden1411/compiler.nvim",
-    cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
-    dependencies = { "stevearc/overseer.nvim", "nvim-telescope/telescope.nvim" },
-    opts = {},
-  },
-  {
-    "stevearc/overseer.nvim",
-    commit = "6271cab7ccc4ca840faa93f54440ffae3a3918bd",
-    cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
-    opts = {
-      task_list = {
-        direction = "bottom",
-        min_height = 25,
-        max_height = 25,
-        default_detail = 1
-      },
-    },
   },
 
   -- LuaSnip (https://github.com/L3MON4D3/LuaSnip)
@@ -147,7 +125,7 @@ local plugins = {
       require("todo-comments").setup()
     end,
   },
-  { "windwp/nvim-autopairs", event = "InsertEnter" },
+  { "windwp/nvim-autopairs",           event = "InsertEnter" },
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
@@ -160,8 +138,6 @@ local plugins = {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
   },
-
-  "tpope/vim-fugitive",
 
   -- nvim-cmp (https://github.com/hrsh7th/nvim-cmp)
   {
@@ -231,20 +207,8 @@ local plugins = {
     "marilari88/twoslash-queries.nvim",
   },
 
-  -- vim-tmux-navigator (https://github.com/christoomey/vim-tmux-navigator)
-  {
-    "christoomey/vim-tmux-navigator",
-    event = "VeryLazy",
-    config = function()
-      vim.g.tmux_navigator_disable_when_zoomed = 1
-      vim.g.tmux_navigator_save_on_switch = 2
-      vim.g.VtrOrientation = "v"
-      vim.g.VtrPercentage = 20
-    end,
-  },
-
   -- which-key (https://github.com/folke/which-key.nvim)
-  { "folke/which-key.nvim",  event = "VeryLazy" },
+  { "folke/which-key.nvim", event = "VeryLazy" },
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -259,26 +223,6 @@ local plugins = {
       --   If not available, we use `mini` as the fallback
       "rcarriga/nvim-notify",
     },
-  },
-  { "folke/neodev.nvim",    opts = {} },
-  { "mfussenegger/nvim-dap" },
-  {
-    "leoluz/nvim-dap-go",
-    ft = "go",
-    dependencies = "mfussenegger/nvim-dap",
-    config = function(_, opts)
-      require("dap-go").setup(opts)
-    end,
-  },
-  {
-    "olexsmir/gopher.nvim",
-    ft = "go",
-    config = function(_, opts)
-      require("gopher").setup(opts)
-    end,
-    build = function()
-      vim.cmd([[silent! GoInstallDeps]])
-    end,
   },
 }
 local opts = {}

@@ -6,8 +6,6 @@ require("mason-lspconfig").setup({
   ensure_installed = {
     "lua_ls",
     "tsserver",
-    "gopls",
-    "omnisharp",
     "biome",
     "ansiblels"
   },
@@ -15,9 +13,7 @@ require("mason-lspconfig").setup({
 })
 
 local servers = {
-  powershell_es = {},
   biome = {},
-  cssls = {},
   lua_ls = {
     settings = {
       Lua = {
@@ -68,26 +64,6 @@ local servers = {
       enable_inlay_hints = true,
       enable_snippets = false,
     },
-  },
-  gopls = {
-    settings = {
-      filetypes = { "go", "gomod", "gowork", "gotmpl" },
-      gopls = {
-        completeUnimported = true,
-        analyses = {
-          unusedparams = true,
-        },
-      },
-    },
-  },
-  omnisharp = {
-    enable_editorconfig_support = true,
-    enable_ms_build_load_projects_on_demand = false,
-    enable_roslyn_analyzers = false,
-    organize_imports_on_format = true,
-    enable_import_completion = true,
-    sdk_include_prereleases = true,
-    analyze_open_documents_only = false,
   },
   ansiblels = {
     single_file_support = true
@@ -282,10 +258,6 @@ nls.setup({
   sources = {
     nls.builtins.formatting.biome,
     nls.builtins.formatting.fish_indent,
-    nls.builtins.formatting.gofumpt,
-    nls.builtins.formatting.goimports_reviser,
-    nls.builtins.formatting.golines,
-    nls.builtins.formatting.csharpier,
   },
   on_attach = on_attach,
 })
