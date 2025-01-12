@@ -1,5 +1,5 @@
 font-family = "Cascadia Code"
-font-size = 14
+font-size = 13
 shell-integration = fish
 cursor-style = block
 cursor-style-blink = false
@@ -7,16 +7,17 @@ shell-integration-features = no-cursor
 confirm-close-surface = false
 window-decoration = false
 
-# Custom
-background = #0f1111 
-foreground = #fbf2f1 
+# Tokyo Night
+background = 16161e 
+foreground = c0caf5
+
 palette = 0=#15161e
-palette = 1=#ff7f7f
-palette = 2=#81bf3f
+palette = 1=#f7768e
+palette = 2=#9ece6a
 palette = 3=#fb9435
-palette = 4=#069494 
-palette = 5=#b22222
-palette = 6=#77f7f7
+palette = 4=#7aa2f7
+palette = 5=#bb9af7
+palette = 6=#7dcfff
 palette = 7=#a9b1d6
 palette = 8=#4a4868
 palette = 9=#f7768e

@@ -67,7 +67,8 @@ local servers = {
   },
   ansiblels = {
     single_file_support = true
-  }
+  },
+  superhtml = {}
 }
 
 -- Diagnostics
