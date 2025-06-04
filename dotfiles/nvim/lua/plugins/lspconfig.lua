@@ -5,12 +5,11 @@ require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = {
     "lua_ls",
-    "tsserver",
     "biome",
     "ansiblels"
   },
-  -- automatic_installation = true,
 })
+
 
 local servers = {
   biome = {},
@@ -40,21 +39,6 @@ local servers = {
       },
     },
   },
-  tsserver = {
-    settings = {
-      typescript = {
-        inlayHints = {
-          includeInlayParameterNameHints = "literal",
-          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = false,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
-        },
-      },
-    },
-  },
   zls = {
     settings = {
       name = "zls",
@@ -71,17 +55,18 @@ local servers = {
   superhtml = {}
 }
 
--- Diagnostics
-local signs = icons.diagnostics
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-end
-
 vim.diagnostic.config({
   underline = true,
   update_in_insert = false,
   virtual_text = { spacing = 4, prefix = "●" },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
+      [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
+      [vim.diagnostic.severity.INFO] = icons.diagnostics.Info,
+      [vim.diagnostic.severity.WARN] = icons.diagnostics.Warn,
+    },
+  },
   severity_sort = true,
   float = {
     header = false,
